@@ -1,0 +1,60 @@
+{
+  "name": "my-gulp-template",
+  "version": "1.0.0",
+  "description": "My gulp template for all my projects.",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint source/js/**/*.js",
+    "editorconfig": "editorconfig-cli",
+    "stylelint": "stylelint \"source/sass/**/*.scss\" --syntax scss",
+    "start": "gulp",
+    "build": "gulp build",
+    "test": "npm run editorconfig && npm run stylelint && eslint source/js/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "autoprefixer": "^9.7.5",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.7",
+    "browserify": "^16.5.1",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.8.0",
+    "eslint-config-htmlacademy": "^0.5.2",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-posthtml": "^3.0.4",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-svgstore": "^7.0.1",
+    "gulp-webp": "^4.0.1",
+    "node-sass": "^4.13.1",
+    "posthtml-include": "^1.4.1",
+    "stylelint": "^13.3.2",
+    "stylelint-config-htmlacademy": "^0.1.4",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "IE 11",
+    "Firefox ESR"
+  ],
+  "editorconfig-cli": [
+    "*.json",
+    "*.js",
+    "source/*.html",
+    "source/js/**/*.js",
+    "source/img/**/*.svg",
+    "source/sass/**/*.{sass,scss}"
+  ],
+  "dependencies": {
+    "del": "^5.1.0"
+  }
+}

@@ -1,0 +1,9 @@
+@import "../general/mixin.scss";
+
+.btn {
+  @include btn-reset;
+}
+
+// .btn--main {
+
+// }

@@ -1,0 +1,12 @@
+// Vendor
+@import "vendor/normalize";
+
+//General
+@import "general/variables";
+@import "general/mixin";
+@import "general/common";
+@import "general/fonts";
+
+//Components
+@import "components/*";
+@import "partials/*";
