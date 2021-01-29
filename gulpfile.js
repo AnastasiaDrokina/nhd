@@ -1,7 +1,6 @@
-const {series, src, dest, watch} = require(`gulp`);
+const { series, src, dest, watch } = require(`gulp`);
 const plumber = require(`gulp-plumber`);
-const sass = require(`gulp-sass`);
-sass.compiler = require(`node-sass`);
+const sass = require(`gulp-dart-sass`);
 const sourcemaps = require(`gulp-sourcemaps`);
 const rename = require(`gulp-rename`);
 const postcss = require(`gulp-postcss`);
@@ -48,12 +47,12 @@ function css() {
 function img() {
   return src(`source/img/**/*.{jpg,png,svg}`)
     .pipe(imagemin([
-      imagemin.mozjpeg({quality: 75, progressive: true}),
-      imagemin.optipng({optimizationLevel: 5}),
+      imagemin.mozjpeg({ quality: 75, progressive: true }),
+      imagemin.optipng({ optimizationLevel: 5 }),
       imagemin.svgo({
         plugins: [
-          {removeViewBox: false},
-          {cleanupIDs: false}
+          { removeViewBox: false },
+          { cleanupIDs: false }
         ]
       })
     ]))
@@ -63,7 +62,7 @@ function img() {
 
 function imgWebp() {
   return src(`build/img/**/*.{jpg,png}`)
-    .pipe(webp({quality: 90}))
+    .pipe(webp({ quality: 90 }))
     .pipe(dest(`build/img/`));
 }
 
@@ -72,19 +71,19 @@ function sprite() {
     .pipe(imagemin([
       imagemin.svgo({
         plugins: [
-          {removeViewBox: false},
-          {cleanupIDs: false}
+          { removeViewBox: false },
+          { cleanupIDs: false }
         ]
       })
     ]))
-    .pipe(svgstore({inlineSvg: true}))
+    .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename(`sprite_auto.svg`))
     .pipe(dest(`build/img`));
 }
 
 function html() {
   const plugins = [
-    include({root: `source/partials`})
+    include({ root: `source/partials` })
   ];
 
   return src(`source/*.html`)
@@ -94,7 +93,7 @@ function html() {
 
 function js() {
   return browserify([`source/js/script.js`])
-    .transform(babelify, {presets: [`@babel/preset-env`]})
+    .transform(babelify, { presets: [`@babel/preset-env`] })
     .bundle()
     .pipe(source(`script.js`))
     .pipe(dest(`build/js`))
@@ -130,7 +129,7 @@ function copy() {
   ], {
     base: `source`
   })
-  .pipe(dest(`build/`));
+    .pipe(dest(`build/`));
 }
 
 function clean() {
