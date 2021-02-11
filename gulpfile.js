@@ -9,8 +9,6 @@ const cssnano = require(`cssnano`);
 const imagemin = require(`gulp-imagemin`);
 const webp = require(`gulp-webp`);
 const svgstore = require(`gulp-svgstore`);
-const posthtml = require(`gulp-posthtml`);
-const include = require(`posthtml-include`);
 const browserSync = require(`browser-sync`).create();
 const sassGlob = require(`gulp-sass-glob`);
 const babelify = require(`babelify`);
@@ -18,6 +16,7 @@ const browserify = require(`browserify`);
 const source = require(`vinyl-source-stream`);
 const buffer = require(`vinyl-buffer`);
 const del = require(`del`);
+const twig = require('gulp-twig');
 
 
 function css() {
@@ -82,14 +81,12 @@ function sprite() {
 }
 
 function html() {
-  const plugins = [
-    include({ root: `source/partials` })
-  ];
-
-  return src(`source/*.html`)
-    .pipe(posthtml(plugins))
-    .pipe(dest(`build/`));
-}
+  return src(`source/templates/**/[^_]*.twig`)
+      .pipe(twig({
+        base: 'source/templates',
+      }))
+      .pipe(dest(`build/`));
+};
 
 function js() {
   return browserify([`source/js/script.js`])
@@ -113,7 +110,7 @@ function server() {
   watch(`source/sass/**/*.scss`, css);
   watch(`source/js/**/*.js`, js);
   watch(`source/img/icons/*.svg`, series(sprite, html, refresh));
-  watch([`source/*.html`, `source/partials/*.html`], series(html, refresh));
+  watch(`source/templates/**/*.twig`, series(html, refresh));
 }
 
 function refresh(done) {
