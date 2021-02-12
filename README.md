@@ -1,30 +1,30 @@
-# NHD work instructions :woman_student: :man_student:
+# NHD :woman_technologist: :man_technologist:
 
-## Getting Started, must be installed: :bell:
+NHD is an amazing planning and team manager.
+
+## Getting Started :rocket:
+
+### Prerequisites :bell:
 
 - Node.js v.10.15.3
 - Gulp v4
 - npm last version
 
-## Available commands :computer:
+### Installation :computer:
 
-### Prerequisites
-
-- npm
-- gulp
-- node
-
-### Installation
-
-- clone the repo
-- `npm install` - install NPM packages
-- `npm start` - running a local server
-- `npm run build` - running a project without starting a local server
-- `npm test` - running testing with code guides
+1. clone the repo `git clone https://github.com/AnastasiaDrokina/nhd.git`
+2. install NPM packages `npm install`
+3. start the project `npm start`
 
 All development is done in the source directory.
 
 The resulting code goes into the build directory.
+
+## Available commands :fire:
+
+- `npm start` - run a local server
+- `npm run build` - build project for production
+- `npm test` - run testing with code guides
 
 ## Workflow :white_check_mark:
 
@@ -33,5 +33,4 @@ The resulting code goes into the build directory.
 - have fun and code
 - open a pull request
 - link issue to the pull request
-- modify the code if there are comments from a tutor
 - if everything is alright, merge this pull request and close it
