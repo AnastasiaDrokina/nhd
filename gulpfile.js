@@ -109,11 +109,14 @@ function js() {
 
 function server() {
   browserSync.init({
-    server: `./build`,
+    server: {
+      baseDir: `./build`,
+      index: `pages/index.html`
+    },
     notify: false,
     open: true,
     cors: true,
-    ui: false
+    ui: false,
   });
 
   watch(`source/sass/**/*.scss`, css);
