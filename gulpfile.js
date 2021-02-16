@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const { series, src, dest, watch } = require(`gulp`);
 const plumber = require(`gulp-plumber`);
 const sass = require(`gulp-dart-sass`);
@@ -17,7 +19,7 @@ const source = require(`vinyl-source-stream`);
 const buffer = require(`vinyl-buffer`);
 const del = require(`del`);
 const twig = require('gulp-twig');
-
+const data = require('gulp-data');
 
 function css() {
   const plugins = [
@@ -82,10 +84,17 @@ function sprite() {
 
 function html() {
   return src(`source/templates/**/[^_]*.twig`)
-      .pipe(twig({
-        base: 'source/templates',
-      }))
-      .pipe(dest(`build/`));
+    .pipe(data(file => {
+      const filename = path.basename(file.path, '.twig');
+      if (fs.existsSync(`source/data/${filename}.json`)) {
+        return JSON.parse(fs.readFileSync(`source/data/${filename}.json`))
+      }
+      return;
+    }))
+    .pipe(twig({
+      base: 'source/templates'
+    }))
+    .pipe(dest(`build/`));
 };
 
 function js() {
@@ -100,17 +109,20 @@ function js() {
 
 function server() {
   browserSync.init({
-    server: `./build`,
+    server: {
+      baseDir: `./build`,
+      index: `pages/index.html`
+    },
     notify: false,
     open: true,
     cors: true,
-    ui: false
+    ui: false,
   });
 
   watch(`source/sass/**/*.scss`, css);
   watch(`source/js/**/*.js`, js);
   watch(`source/img/icons/*.svg`, series(sprite, html, refresh));
-  watch(`source/templates/**/*.twig`, series(html, refresh));
+  watch([`source/templates/**/*.twig`, `source/data/*.json`], series(html, refresh));
 }
 
 function refresh(done) {
@@ -135,3 +147,4 @@ function clean() {
 
 exports.default = series(clean, copy, css, img, imgWebp, sprite, html, js, server);
 exports.build = series(clean, copy, css, img, imgWebp, sprite, html, js);
+exports.a = series(html);
