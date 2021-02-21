@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="description" content="A demo of how to use gulp-twig"/>
-    <meta name="author" content="Simon de Turck"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="A demo of how to use gulp-twig" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>Test</title>
+    <title>{% block headTitle %}{% endblock %} - NHD</title>
+  </head>
 
-</head>
-<body>
-<section>
-    {% block page %}{% endblock %}
-</section>
-</body>
+  <body>
+    {% include "partials/_nav.twig" %}
+
+    <main>
+      <h1 class="title">{% block mainTitle %}{% endblock %}</h1>
+    </main>
+  </body>
 </html>
