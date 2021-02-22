@@ -16,6 +16,8 @@
       <h1 class="title">{% block mainTitle %}{% endblock %}</h1>
     </main>
 
-    {% include "partials/_modal.twig" %}
+    <div>
+      {% block modals %}{% endblock %}
+    </div>
   </body>
 </html>
