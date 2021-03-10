@@ -1,0 +1,27 @@
+{# How to use
+  {% extends "layouts/_modal.twig" %}
+
+  {% set modal = {
+    title: 'Modal title',
+    btnSubmit: 'Add project',
+    btnReset: 'Reset'
+  } %}
+
+  {% block modalContent %}This is modal content{% endblock %}
+#}
+
+<div class="modal">
+  <button class="btn-close js-btn-close" type="button">Fermer</button>
+  <h2>{{modal.title}}</h2>
+
+  <form class="form">
+    <div class="modal__content">
+      {% block modalContent %}{% endblock %}
+    </div>
+
+    <div>
+      <button class="btn btn--reset" type="reset">{{modal.btnReset}}</button>
+      <button class="btn btn--add" type="submit">{{modal.btnSubmit}}</button>
+    </div>
+  </form>
+</div>
