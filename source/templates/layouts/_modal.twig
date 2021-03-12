@@ -7,7 +7,7 @@
     btnReset: 'Reset'
   } %}
 
-  {% block modalContent %}This is modal content{% endblock %}
+  {% block modalFormContent %}This is modal content{% endblock %}
 #}
 
 <div class="modal">
@@ -15,8 +15,8 @@
   <h2>{{modal.title}}</h2>
 
   <form class="form">
-    <div class="modal__content">
-      {% block modalContent %}{% endblock %}
+    <div class="form__content">
+      {% block modalFormContent %}{% endblock %}
     </div>
 
     <div>
