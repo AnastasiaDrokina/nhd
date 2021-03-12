@@ -6,7 +6,7 @@
   btnReset: 'Annuler'
 } %}
 
-{% block formContent %}
+{% block modalFormContent %}
 
 <div class="form__wrapper">
   <label class="form__label" for=""></label>
@@ -15,14 +15,30 @@
 
 <div class="form__wrapper">
   <label class="form__label" for=""></label>
-  <input class="form__field" id="" type="date" name="" value="">
+  <input class="form__field" id="" type="text" name="" value="" aria-describedby="calendar">
+  <p id="calendar"></p>
 </div>
 
 <div class="form__wrapper">
-  <select class="form__field" class="field__" id="" name="" size="">
-    <option class="form__field--oprion" value="">Option-1</option>
-    <option class="form__field--oprion" value="">Option-2</option>
+  <label class="form__label" for=""></label>
+  <select class="form__field" id="" name="">
+    <option value="">Option-1</option>
+    <option value="">Option-2</option>
   </select>
 </div>
+
+{# The error state #}
+<div class="form__wrapper">
+  <label class="form__label" for=""></label>
+  <input class="form__field form__fielmd--error" id="" type="text" name="" value="" aria-required="true" aria-describedby="error">
+  <p class="error"></p>
+</div>
+
+{# Disabled state #}
+<div class="form__wrapper">
+  <label class="form__label" for=""></label>
+  <input class="form__field form__fielmd--error" id="" type="text" name="" value="" disabled>
+</div>
+
 
 {% endblock %}
