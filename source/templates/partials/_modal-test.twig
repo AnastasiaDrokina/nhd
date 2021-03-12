@@ -6,4 +6,23 @@
   btnReset: 'Annuler'
 } %}
 
-{% block modalContent %}This is modal content{% endblock %}
+{% block formContent %}
+
+<div class="form__wrapper">
+  <label class="form__label" for=""></label>
+  <input class="form__field" id="" type="text" name="" value="">
+</div>
+
+<div class="form__wrapper">
+  <label class="form__label" for=""></label>
+  <input class="form__field" id="" type="date" name="" value="">
+</div>
+
+<div class="form__wrapper">
+  <select class="form__field" class="field__" id="" name="" size="">
+    <option class="form__field--oprion" value="">Option-1</option>
+    <option class="form__field--oprion" value="">Option-2</option>
+  </select>
+</div>
+
+{% endblock %}
